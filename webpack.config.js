@@ -21,7 +21,11 @@ const plugins = [
     manifest_version: 3,
     background: {
       service_worker: "main.js"
-    }
+    },
+    permissions: ["storage"],
+    action: {
+      default_popup: "index.html"
+    },
   })
 ]
 
@@ -37,6 +41,7 @@ const rules = [
 ]
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry,
   output,
   module: { rules },

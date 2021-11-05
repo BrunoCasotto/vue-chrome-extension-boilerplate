@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "yarn webpack --mode='development' --watch --config ./webpack.config.js"
+    "start:dev": "webpack --mode='development' --watch --config ./webpack.config.js",
+    "build": "webpack --mode='production' --config ./webpack.config.js"
   },
   "author": "",
   "license": "ISC",
