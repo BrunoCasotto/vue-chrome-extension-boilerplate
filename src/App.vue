@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.app {
+  background: red;
+  height: 100px;
+  width: 200px;
+}
 </style>
