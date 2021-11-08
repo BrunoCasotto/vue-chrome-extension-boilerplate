@@ -1,3 +1,4 @@
+const manifest = require('./manifest')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -16,23 +17,8 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: './index.html'
   }),
-  new MiniCssExtractPlugin({
-    filename: '[name].css',
-    chunkFilename: '[name].css',
-  }),
-  new GenerateJsonPlugin('manifest.json', {
-    name: "CsgoSeller",
-    description: "Tool to sell csgo items",
-    version: "1.0",
-    manifest_version: 3,
-    background: {
-      service_worker: "main.js"
-    },
-    permissions: ["storage"],
-    action: {
-      default_popup: "index.html"
-    },
-  })
+  new MiniCssExtractPlugin(),
+  new GenerateJsonPlugin('manifest.json', manifest)
 ]
 
 const rules = [
@@ -45,8 +31,9 @@ const rules = [
     loader: 'json-loader'
   },
   {
-    test: /\.s[ac]ss$/i,
+    test: /\.scss$/i,
     use: [
+      MiniCssExtractPlugin.loader,
       "css-loader",
       "sass-loader",
     ],
