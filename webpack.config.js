@@ -2,7 +2,9 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const GenerateJsonPlugin = require('generate-json-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const isProd = process.env.NODE_ENV === 'production'
 const entry =  ['./src/main.js']
 
 const output = {
@@ -13,6 +15,10 @@ const plugins = [
   new VueLoaderPlugin(),
   new HtmlWebpackPlugin({
     template: './index.html'
+  }),
+  new MiniCssExtractPlugin({
+    filename: '[name].css',
+    chunkFilename: '[name].css',
   }),
   new GenerateJsonPlugin('manifest.json', {
     name: "CsgoSeller",
@@ -41,17 +47,21 @@ const rules = [
   {
     test: /\.s[ac]ss$/i,
     use: [
-      "style-loader",
       "css-loader",
       "sass-loader",
     ],
   },
 ]
 
-module.exports = {
-  devtool: 'cheap-module-source-map',
+const config = {
   entry,
   output,
   module: { rules },
   plugins,
 }
+
+if (!isProd) {
+  config.devtool = 'source-map'
+}
+
+module.exports = config

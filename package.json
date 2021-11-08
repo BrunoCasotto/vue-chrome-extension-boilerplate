@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack --mode='development' --watch --config ./webpack.config.js",
-    "build": "webpack --mode='production' --config ./webpack.config.js"
+    "dev": "export NODE_ENV=development && webpack --mode='development' --watch --config ./webpack.config.js",
+    "build": "export NODE_ENV=production && webpack --mode='production' --config ./webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "json-loader": "^0.5.7",
+    "mini-css-extract-plugin": "^2.4.4",
     "style-loader": "^3.3.1",
     "vue": "^2.6.14",
     "vue-loader": "^15.9.8",
