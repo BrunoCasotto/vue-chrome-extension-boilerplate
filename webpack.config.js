@@ -6,7 +6,10 @@ const GenerateJsonPlugin = require('generate-json-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
-const entry =  ['./src/main.js']
+const entry =  {
+  main: './src/main.js',
+  background: './src/background'
+}
 
 const output = {
   path: path.resolve(__dirname, './dist'),
