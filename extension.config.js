@@ -1,22 +1,22 @@
 module.exports = {
   //config to generate your manifest json
   manifest: {
-    name: "Extension Name",
-    description: "Extension description here",
-    version: "1.0",
+    name: 'Extension Name',
+    description: 'Extension description here',
+    version: '1.0',
     manifest_version: 3,
     background: {
-      service_worker: "background.js"
+      service_worker: 'background.js'
     },
     content_scripts: [
       {
-        "matches": ["https://google.com/*"],
-        "js": ["content.js"]
+        matches: ['https://www.google.com/*'],
+        js: ['content.js']
       }
     ],
-    permissions: ["storage", "activeTab", "declarativeContent"],
+    permissions: ['storage', 'activeTab', 'declarativeContent'],
     action: {
-      default_popup: "index.html"
+      default_popup: 'index.html'
     },
   },
   //setting your main,background,content or whatever files
