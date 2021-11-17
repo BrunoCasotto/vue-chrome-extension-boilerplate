@@ -1,12 +1,18 @@
 module.exports = {
-  name: "Csgo Seller tools",
-  description: "Tool to sell csgo items",
+  name: "Extension Name",
+  description: "Extension description here",
   version: "1.0",
   manifest_version: 3,
-  // background: {
-  //   service_worker: "main.js"
-  // },
-  permissions: ["storage", "activeTab"],
+  background: {
+    service_worker: "background.js"
+  },
+  content_scripts: [
+    {
+      "matches": ["https://*.steamcommunity.com/*/inventory/"],
+      "js": ["handle.js"]
+    }
+  ],
+  permissions: ["storage", "activeTab", "declarativeContent"],
   action: {
     default_popup: "index.html"
   },

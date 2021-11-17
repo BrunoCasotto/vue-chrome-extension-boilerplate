@@ -8,7 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 const entry =  {
   main: './src/main.js',
-  background: './src/background'
+  background: './src/background.js',
+  handle: './src/handle-dom.js'
 }
 
 const output = {

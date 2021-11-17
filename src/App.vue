@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    Meus items
+    <h1 class="app__title">Hello Extension</h1>
   </div>
 </template>
 
@@ -10,8 +10,12 @@ export default {}
 
 <style lang="scss">
 .app {
-  background: red;
   height: 100px;
   width: 200px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
 </style>
