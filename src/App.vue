@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { POPUP_SCRIPT_ID } from './constants/script.definitions'
+import { POPUP_SCRIPT_ID } from './constants/from.modules'
 import { GET_SEARCH_TERM } from './constants/actions'
 import { domIsReady, getTabId, sendMessage } from './utils/chrome'
 import { generateMessage } from './utils/message'
