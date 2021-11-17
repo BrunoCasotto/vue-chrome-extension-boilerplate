@@ -1,4 +1,4 @@
-const manifest = require('./manifest')
+const { manifest, entry } = require('./extension.config')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -6,11 +6,6 @@ const GenerateJsonPlugin = require('generate-json-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
-const entry =  {
-  main: './src/main.js',
-  background: './src/background.js',
-  handle: './src/handle-dom.js'
-}
 
 const output = {
   path: path.resolve(__dirname, './dist'),
