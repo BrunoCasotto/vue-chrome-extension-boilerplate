@@ -1,14 +1,20 @@
 <template>
   <div class="search-term">
-    <button @click="updateCollor">
-      UPDATE
-    </button>
+    <select v-model="selectedTheme" @change="updateCollor(selectedTheme)">
+      <option
+        v-for="option in options"
+        v-bind:value="option.value"
+        :key="option.value"
+      >
+        {{ option.text }}
+      </option>
+    </select>
   </div>
 </template>
 
 <script>
 import { POPUP_SCRIPT_ID } from './../constants/from.modules'
-import { GET_SEARCH_TERM } from './../constants/actions'
+import { SET_GOOGLE_BACKGROUND } from './../constants/actions'
 import { generateMessage } from './../utils/message'
 import { sendMessage } from './../utils/chrome'
 
@@ -20,13 +26,19 @@ export default {
   },
   data() {
     return {
-      searchTerm: '',
+      selectedTheme: 'default',
+      options: [
+        { text: 'Default', value: 'default' },
+        { text: 'Dark', value: 'gray' },
+        { text: 'Blue', value: 'blue' },
+        { text: 'Green', value: 'green' }
+      ]
     }
   },
   methods: {
-    async getSearchTerm() {
-      const message = generateMessage(POPUP_SCRIPT_ID, GET_SEARCH_TERM, {})
-      this.searchTerm = await sendMessage(this.tabId, message)
+    updateCollor(background) {
+      const message = generateMessage(POPUP_SCRIPT_ID, SET_GOOGLE_BACKGROUND, background)
+      sendMessage(this.tabId, message)
     },
   }
 }
