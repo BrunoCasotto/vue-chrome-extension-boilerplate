@@ -10,7 +10,10 @@ module.exports = {
     },
     content_scripts: [
       {
-        matches: ['https://www.google.com/*'],
+        matches: [
+          'https://*.google.com/*',
+          'https://*.google.com.br/*'
+        ],
         js: ['content.js']
       }
     ],
