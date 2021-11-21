@@ -3,7 +3,8 @@
     <h1 class="app__title">Google Extension</h1>
 
     <template v-if="domIsReady">
-      <SearchTerm :tabId="tabId"/>
+      <SearchTerm class="app__search-term" :tabId="tabId"/>
+      <SetGoogleBackground :tabId="tabId"/>
     </template>
 
     <h2 v-else class="app__title"> Loading...</h2>
@@ -13,10 +14,12 @@
 <script>
 import { domIsReady, getTabId } from './utils/chrome'
 import SearchTerm from './components/SearchTerm.vue'
+import SetGoogleBackground from './components/SetGoogleBackground.vue'
 
 export default {
   components: {
     SearchTerm,
+    SetGoogleBackground,
   },
   data() {
     return {
@@ -38,16 +41,22 @@ export default {
 </script>
 
 <style lang="scss">
-$btn-background: #2c67be;
-$btn-color: #ffffff;
+@import './scss/reset';
 
 .app {
   height: 100px;
   width: 200px;
+  padding: 10px;
+
+  &__search-term {
+    margin-bottom: 10px;
+  }
 
   &__title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
   }
 }
 </style>

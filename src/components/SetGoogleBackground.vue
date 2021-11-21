@@ -1,10 +1,8 @@
 <template>
   <div class="search-term">
-    <button @click="getSearchTerm" class="search-term__btn">
-      Get Term
+    <button @click="updateCollor">
+      UPDATE
     </button>
-
-    <p>Your Term is: {{ searchTerm }}</p>
   </div>
 </template>
 
@@ -40,13 +38,11 @@ $btn-color: #ffffff;
 
 .search-term {
   &__btn {
-    width: 100%;
     background: $btn-background;
     color: $btn-color;
     border: none;
     padding: 5px;
     font-weight: bold;
-    margin-bottom: 10px;
   }
 }
 </style>
